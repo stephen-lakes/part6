@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { toggleImportanceOf } from "./reducers/noteReducer";
+import PropTypes from "prop-types";
 
 const Note = ({ note, handleClick }) => {
   return (
@@ -10,6 +11,14 @@ const Note = ({ note, handleClick }) => {
   );
 };
 
+Note.propTypes = {
+  note: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    content: PropTypes.string.isRequired,
+    important: PropTypes.bool.isRequired,
+  }).isRequired,
+  handleClick: PropTypes.func.isRequired,
+};
 
 const Notes = () => {
   const dispatch = useDispatch();
