@@ -62,13 +62,17 @@ const App = () => {
     store.dispatch({
       type: "TOGGLE_IMPORTANCE",
       payload: {
-        id
-      }
-    })
+        id,
+      },
+    });
   };
 
   return (
     <div>
+      <form onSubmit={addNote}>
+        <input name="note" />
+        <button type="submit">add</button>
+      </form>
       <ul>
         {store.getState().map((note) => (
           <li key={note.id}>
