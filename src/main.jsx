@@ -30,6 +30,19 @@ store.dispatch({
   },
 });
 
+store.dispatch({
+  type: "NEW_NOTE",
+  payload: {
+    content: "Created a new note",
+    important: true,
+    id: 3,
+  },
+});
+
+const generateId = () => {
+  Number((Math.random() * 1000000).toFixed(0));
+};
+
 const App = () => {
   return (
     <div>
