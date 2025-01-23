@@ -13,13 +13,8 @@ const reducer = combineReducers({
 
 const store = createStore(reducer);
 
-store.subscribe(() => console.log(store.getState()))
-store.dispatch(filterChange('IMPORTANT'))
-store.dispatch(createNote('combineReducers forms one reducer from many simple reducers'))
-store.dispatch(filterChange('NONIMPORTANT'))
-// ReactDOM.createRoot(document.getElementById("root")).render(
-//   <Provider store={store}>
-//     {/* <App /> */}
-//     <div />
-//   </Provider>
-// );
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
