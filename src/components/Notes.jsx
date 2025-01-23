@@ -22,7 +22,7 @@ Note.propTypes = {
 
 const Notes = () => {
   const dispatch = useDispatch();
-  const notes = useSelector((state) => state);
+  const notes = useSelector((state) => state.notes);
 
   return (
     <ul>
