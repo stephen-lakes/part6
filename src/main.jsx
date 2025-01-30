@@ -2,7 +2,7 @@ import ReactDOM from "react-dom/client";
 
 import App from "./App";
 import { Provider } from "react-redux";
-import noteReducer, { appendNote } from "./reducers/noteReducer";
+import noteReducer, { setNotes } from "./reducers/noteReducer";
 import filterReducer from "./reducers/filterReducer";
 import { configureStore } from "@reduxjs/toolkit";
 
@@ -15,11 +15,13 @@ const store = configureStore({
   },
 });
 
-noteService.getAll().then((notes) => {
-  notes.forEach((note) => {
-    store.dispatch(appendNote(note));
-  });
-});
+// noteService.getAll().then((notes) => {
+//   notes.forEach((note) => {
+//     store.dispatch(appendNote(note));
+//   });
+// });
+
+noteService.getAll().then((notes) => store.dispatch(setNotes(notes)));
 
 console.log(store.getState());
 
