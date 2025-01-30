@@ -37,9 +37,9 @@ const noteSlice = createSlice({
       console.log(current(state));
       return state.map((note) => (note.id !== id ? note : changedNote));
     },
-  },
-  appendNote(state, action) {
-    state.push(action.payload);
+    appendNote(state, action) {
+      state.push(action.payload);
+    },
   },
 });
 

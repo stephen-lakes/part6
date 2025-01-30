@@ -15,11 +15,11 @@ const store = configureStore({
   },
 });
 
-noteService.getAll().then((notes) =>
+noteService.getAll().then((notes) => {
   notes.forEach((note) => {
     store.dispatch(appendNote(note));
-  })
-);
+  });
+});
 
 console.log(store.getState());
 
