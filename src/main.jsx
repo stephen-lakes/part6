@@ -21,7 +21,7 @@ const store = configureStore({
 //   });
 // });
 
-noteService.getAll().then((notes) => store.dispatch(setNotes(notes)));
+// noteService.getAll().then((notes) => store.dispatch(setNotes(notes)));
 
 console.log(store.getState());
 
