@@ -13,7 +13,7 @@ const Note = ({ note, handleClick }) => {
 
 Note.propTypes = {
   note: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
     important: PropTypes.bool.isRequired,
   }).isRequired,
