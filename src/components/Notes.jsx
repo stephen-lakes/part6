@@ -32,16 +32,18 @@ const Notes = () => {
       : notes.filter((note) => !note.important);
   });
 
+  const handleToggle = async (id) => {
+    const toggledNote = await noteService.toggleImportanceOf(id);
+    dispatch(toggleImportanceOf(toggledNote));
+  };
+
   return (
     <ul>
       {notes.map((note) => (
         <Note
           key={note.id}
           note={note}
-          handleClick={async () => {
-            const toggledNote = await noteService.toggleImportanceOf(note.id);
-            dispatch(toggleImportanceOf(toggledNote));
-          }}
+          handleClick={() => handleToggle(note.id)}
         />
       ))}
     </ul>
