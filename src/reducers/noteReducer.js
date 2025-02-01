@@ -20,12 +20,13 @@ const noteSlice = createSlice({
   initialState: [],
   reducers: {
     createNote(state, action) {
-      const content = action.payload;
-      state.push({
-        content,
-        important: false,
-        id: generateId(),
-      });
+      // const content = action.payload;
+      // state.push({
+      //   content,
+      //   important: false,
+      //   id: generateId(),
+      // });
+      state.push(action.payload);
     },
     toggleImportanceOf(state, action) {
       const id = action.payload;
@@ -46,5 +47,6 @@ const noteSlice = createSlice({
   },
 });
 
-export const { createNote, toggleImportanceOf, appendNote, setNotes } = noteSlice.actions;
+export const { createNote, toggleImportanceOf, appendNote, setNotes } =
+  noteSlice.actions;
 export default noteSlice.reducer;
