@@ -13,4 +13,14 @@ const createNew = async (content) => {
   return response.data;
 };
 
-export default { getAll, createNew };
+const toggleImportanceOf = async (id) => {
+  const note = (await axios.get(`${baseUrl}/${id}`)).data;
+
+  const updatedNote = { ...note, important: !note.important };
+
+  const response = await axios.put(`${baseUrl}/${id}`, updatedNote);
+  console.log("RESPONSE DATA =>>>", response.data);
+  return response.data;
+};
+
+export default { getAll, createNew, toggleImportanceOf };
