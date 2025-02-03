@@ -20,15 +20,15 @@ const noteSlice = createSlice({
   name: "notes",
   initialState: [],
   reducers: {
-    createNote(state, action) {
-      // const content = action.payload;
-      // state.push({
-      //   content,
-      //   important: false,
-      //   id: generateId(),
-      // });
-      state.push(action.payload);
-    },
+    // createNote(state, action) {
+    // const content = action.payload;
+    // state.push({
+    //   content,
+    //   important: false,
+    //   id: generateId(),
+    // });
+    // state.push(action.payload);
+    // },
     toggleImportanceOf(state, action) {
       const toggledNote = action.payload;
       // const noteToChange = state.find((note) => note.id === toggledNote.id);
@@ -50,8 +50,7 @@ const noteSlice = createSlice({
   },
 });
 
-export const { createNote, toggleImportanceOf, appendNote, setNotes } =
-  noteSlice.actions;
+export const { toggleImportanceOf, appendNote, setNotes } = noteSlice.actions;
 
 export const initializeNotes = () => {
   return async (dispatch) => {
@@ -60,10 +59,10 @@ export const initializeNotes = () => {
   };
 };
 
-export const addNewNote = (content) => {
+export const createNote = (content) => {
   return async (dispatch) => {
-    const note = await noteService.createNew(content);
-    dispatch(createNote(note));
+    const newNote = await noteService.createNew(content);
+    dispatch(appendNote(newNote));
   };
 };
 
