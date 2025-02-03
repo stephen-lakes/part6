@@ -60,4 +60,11 @@ export const initializeNotes = () => {
   };
 };
 
+export const addNewNote = (content) => {
+  return async (dispatch) => {
+    const note = await noteService.createNew(content);
+    dispatch(createNote(note));
+  };
+};
+
 export default noteSlice.reducer;
