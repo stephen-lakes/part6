@@ -1,4 +1,5 @@
 import { createSlice, current } from "@reduxjs/toolkit";
+import noteService from "../services/notes";
 
 // const initialState = [
 //   {
@@ -36,8 +37,9 @@ const noteSlice = createSlice({
       //   important: !noteToChange.important,
       // };
       console.log(current(state));
-      return state.map((note) => (note.id !== toggledNote.id ? note : toggledNote));
-
+      return state.map((note) =>
+        note.id !== toggledNote.id ? note : toggledNote
+      );
     },
     appendNote(state, action) {
       state.push(action.payload);
@@ -50,4 +52,12 @@ const noteSlice = createSlice({
 
 export const { createNote, toggleImportanceOf, appendNote, setNotes } =
   noteSlice.actions;
+
+export const initializeNotes = () => {
+  return async (dispatch) => {
+    const notes = await noteService.getAll();
+    dispatch(setNotes(notes));
+  };
+};
+
 export default noteSlice.reducer;
