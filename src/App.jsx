@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { getNotes } from "./requests";
 
 const App = () => {
   const addNote = async (event) => {
@@ -15,11 +16,10 @@ const App = () => {
 
   const result = useQuery({
     queryKey: ["notes"],
-    queryFn: () =>
-      axios.get("http://localhost:3001/notes").then((res) => res.data),
+    queryFn: getNotes,
   });
 
-  console.log("2", JSON.parse(JSON.stringify(result)));
+  console.log(JSON.parse(JSON.stringify(result)));
 
   if (result.isLoading) {
     return <div>Loading ...</div>;
